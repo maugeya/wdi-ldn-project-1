@@ -1,18 +1,27 @@
 const Poet = require('../models/poet');
 
-function poetsIndex(req, res) {
+// function indexRoute(req, res) {
+//   Poet
+//     .find()
+//     .exec()
+//     .then(poets => {
+//       res.render('poets/index', { poets });
+//     })
+//     .catch(err => {
+//       res.status(500).render('error', { error: err });
+//     });
+// }
+
+function indexRoute(req, res, next) {
   Poet
-    .find()
-    .exec()
-    .then(poets => {
-      res.render('poets/index', { poets });
-    })
-    .catch(err => {
-      res.status(500).render('error', { error: err });
-    });
+  .find()
+  .populate('createdBy')
+  .exec()
+  .then((poets) => res.render('poets/index', { poets }))
+  .catch(next);
 }
 
-function poetsShow(req, res) {
+function showRoute(req, res) {
   Poet
     .findById(req.params.id)
     .exec()
@@ -25,11 +34,11 @@ function poetsShow(req, res) {
     });
 }
 
-function poetsNew(req, res) {
+function newRoute(req, res) {
   res.render('poets/new');
 }
 
-function poetsCreate(req, res) {
+function createRoute(req, res) {
   Poet
     .create(req.body)
     .then(() => {
@@ -38,8 +47,8 @@ function poetsCreate(req, res) {
 }
 
 module.exports = {
-  index: poetsIndex,
-  show: poetsShow,
-  new: poetsNew,
-  create: poetsCreate
+  index: indexRoute,
+  show: showRoute,
+  new: newRoute,
+  create: createRoute
 };
