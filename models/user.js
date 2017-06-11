@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  username: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 });
@@ -30,6 +30,7 @@ userSchema.pre('validate', function checkPassword(next) {
 userSchema.pre('save', function checkPassword(next) {
   if(this.isModified('password')) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
+    console.log(this.password);
   }
   next();
 });

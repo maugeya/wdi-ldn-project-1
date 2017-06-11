@@ -1,11 +1,10 @@
 const User = require('../models/user');
 
-function newRoute(req, res) {
+function registrationsNew(req, res) {
   res.render('registrations/new');
-
 }
 
-function createRoute(req, res, next) {
+function registrationsCreate(req, res, next) {
   User
     .create(req.body)
     .then(() => res.redirect('/login'))
@@ -13,19 +12,18 @@ function createRoute(req, res, next) {
       if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
       next(err);
 
-      console.log(req.body);
     });
 }
 
-function showRoute(req, res) {
+function registrationsShow(req, res) {
   return res.render('registrations/show');
 }
 
-function editRoute(req, res) {
+function registrationsEdit(req, res) {
   return res.render('registrations/edit');
 }
 
-function updateRoute(req, res, next) {
+function registrationsUpdate(req, res, next) {
   for(const field in req.body) {
     req.user[field] = req.body[field];
   }
@@ -44,7 +42,7 @@ function updateRoute(req, res, next) {
     });
 }
 
-function deleteRoute(req, res, next) {
+function registrationsDelete(req, res, next) {
   req.user
     .remove()
     .then(() => {
@@ -54,10 +52,10 @@ function deleteRoute(req, res, next) {
 }
 
 module.exports = {
-  new: newRoute,
-  create: createRoute,
-  show: showRoute,
-  delete: deleteRoute,
-  edit: editRoute,
-  update: updateRoute
+  new: registrationsNew,
+  create: registrationsCreate,
+  show: registrationsShow,
+  delete: registrationsDelete,
+  edit: registrationsEdit,
+  update: registrationsUpdate
 };
