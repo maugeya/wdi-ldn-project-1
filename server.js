@@ -9,8 +9,9 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const { port, env, dbURI, sessionSecret } = require('./config/environment');
 const routes = require('./config/routes');
-
-
+const authentication = require('./lib/authentication');
+const customResponses = require('./lib/customResponses');
+const errorHandler = require('./lib/errorHandler');
 
 const app = express();
 
@@ -25,7 +26,9 @@ mongoose.connect(dbURI);
 app.use(express.static(`${__dirname}/public`));
 
 if(env !== 'test') app.use(morgan('dev'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(methodOverride((req) => {
   if(req.body && typeof req.body === 'object' && '_method' in req.body) {
     const method = req.body._method;
@@ -35,8 +38,20 @@ app.use(methodOverride((req) => {
   }
 }));
 
+app.use(session({
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false
+}));
+
 
 app.get('/', (req, res) => res.render('index'));
 
+app.use(flash());
+app.use(authentication);
+app.use(customResponses);
+
 app.use(routes);
+app.use(errorHandler);
+
 app.listen(port, () => console.log(`Express is listening on port ${port}`));

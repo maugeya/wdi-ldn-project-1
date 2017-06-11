@@ -2,8 +2,16 @@
   <img src="<%= poet.image %>" width="100%">
   <div class="card-block">
     <h3><%= poet.name %></h3>
-    <p><%= poet.reason %></p>
-    <em><p><%= poet.recommend %></p></em>
+    <p><b>Why her work inspires me:</b> <%= poet.reason %></p>
+    <em><p>Recommended read: <%= poet.recommend %></p></em>
   </div>
+
+  <%if(locals.isAuthenticated) { %>
+    <a href="/poets/<%= poet.id %>/edit" class="button">Edit</a>
+
+    <form action="poets/<%=poet.id %>" method="POST">
+      <a class="button">Delete</a>
+    </form>
+  <% } %>
 
 </div>

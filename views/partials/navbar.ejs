@@ -4,11 +4,15 @@
     <a href="/poets">Poets</a>
     <a href="/poets/new">Add New</a>
   </div>
-  <div>
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
-    <a href="#">Profile</a>
-    <a href="/logout">Logout</a>
-  </div>
-
+    <% if (locals.isAuthenticated) { %>
+      <div>
+        <a href="/logout">Logout</a>
+        <a href="/profile">Profile</a>
+      </div>
+    <% }  else { %>
+      <div>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+      </div>
+  <% } %>
 </nav>

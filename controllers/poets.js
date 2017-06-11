@@ -1,18 +1,6 @@
 const Poet = require('../models/poet');
 
-// function indexRoute(req, res) {
-//   Poet
-//     .find()
-//     .exec()
-//     .then(poets => {
-//       res.render('poets/index', { poets });
-//     })
-//     .catch(err => {
-//       res.status(500).render('error', { error: err });
-//     });
-// }
-
-function indexRoute(req, res, next) {
+function poetsIndex(req, res, next) {
   Poet
   .find()
   .populate('createdBy')
@@ -21,7 +9,7 @@ function indexRoute(req, res, next) {
   .catch(next);
 }
 
-function showRoute(req, res) {
+function poetsShow(req, res) {
   Poet
     .findById(req.params.id)
     .exec()
@@ -34,21 +22,78 @@ function showRoute(req, res) {
     });
 }
 
-function newRoute(req, res) {
+function poetsNew(req, res) {
   res.render('poets/new');
 }
 
-function createRoute(req, res) {
+function poetsCreate(req, res, next) {
+
+  req.body.createdBy = req.user;
+  if(req.file) req.body.image = req.file.key;
+
   Poet
     .create(req.body)
-    .then(() => {
-      res.redirect('/poets');
+    .then(() => res.redirect('/poets'))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest(`/poets/new`, err.toString());
+      next(err);
     });
 }
 
+function poetsEdit(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.redirect();
+      if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+      return res.render('poets/edit', { poet });
+    })
+    .catch(next);
+}
+
+function poetsUpdate(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.redirect();
+      if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+
+      for(const field in req.body) {
+        poet[field] = req.body[field];
+      }
+
+      return poet.save();
+    })
+    .then(() => res.redirect(`/poets/${req.params.id}`))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest(`/poets/${req.params.id}/edit`, err.toString());
+      next(err);
+    });
+}
+
+function poetsDelete(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.redirect();
+      if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+      return poet.remove();
+    })
+    .then(() => res.redirect('/poets'))
+    .catch(next);
+}
+
+
+
 module.exports = {
-  index: indexRoute,
-  show: showRoute,
-  new: newRoute,
-  create: createRoute
+  index: poetsIndex,
+  show: poetsShow,
+  new: poetsNew,
+  create: poetsCreate,
+  edit: poetsEdit,
+  update: poetsUpdate,
+  delete: poetsDelete
 };
