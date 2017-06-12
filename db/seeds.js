@@ -13,6 +13,7 @@ User.collection.drop();
 User
   .create([{
     email: 'ange@gmail.com',
+    image: 'http://i.imgur.com/v7SUrLZ.jpg',
     username: 'Ange M',
     password: 'password',
     passwordConfirmation: 'password'

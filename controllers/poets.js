@@ -89,6 +89,7 @@ function poetsDelete(req, res, next) {
 
 function createCommentRoute(req, res, next) {
   req.body.createdBy = req.user;
+  
 
   Poet
     .findById(req.params.id)

@@ -1,8 +1,14 @@
-<form action="/user/<%= user.id %>/edit" method="post">
+<form action="/user/<%= user.id %>/edit" method="post" enctype="multipart/form-data">
   <div class="field form-group">
     <label for="username" class="label">Name</label>
     <p class="control">
       <input type="text" name="username" class="input" id="username" placeholder="<%= user.username %>">
+    </p>
+  </div>
+  <div class="field form-group">
+    <label for="image">Image</label>
+    <p class="control">
+      <input type="file" name="image" id="image">
     </p>
   </div>
   <div class="field form-group">s
