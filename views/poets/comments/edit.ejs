@@ -1,11 +1,11 @@
 <h1>Edit Comment</h1>
 
-<form method="POST" action="/poets/:id/comments/:commentId">
+<form method="POST" action="/poets/<%= poet.id %>/comments/<%= comment.id %>">
 
   <input type="hidden" name="_method" value="PUT">
   <div>
     <label for="comment">Comment </label>
-    <textarea name="comment" id="comment" rows="6" cols="50"><%= comment.content %></textarea>
+    <textarea name="content" id="comment" rows="6" cols="50"><%= comment.content %></textarea>
   </div>
   <button>Submit</button>
 </form>

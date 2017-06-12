@@ -20,7 +20,6 @@ router.route('/poets/new')
 router.route('/poets/:id')
   .get(poetsController.show)
   .put(secureRoute, poetsController.update)
-  .put(secureRoute, poetsController.updateComment)
   .delete(secureRoute, poetsController.delete);
 
 
@@ -59,6 +58,7 @@ router.route('/poets/:id/comments')
     .post(secureRoute, poetsController.createComment);
 
 router.route('/poets/:id/comments/:commentId')
+  .put(secureRoute, poetsController.updateComment)
   .delete(secureRoute, poetsController.deleteComment);
 
 router.route('/poets/:id/comments/:commentId/edit')

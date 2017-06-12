@@ -132,7 +132,7 @@ function editCommentRoute(req, res, next) {
 
       const comment = poet.comments.id(req.params.commentId);
 
-      return res.render('poets/comments/edit', { comment });
+      return res.render('poets/comments/edit', { poet, comment });
     })
     .catch(next);
 }
@@ -144,9 +144,10 @@ function updateCommentRoute(req, res, next) {
     .then((poet) => {
       if(!poet) return res.notFound();
       if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+      const comment = poet.comments.id(req.params.commentId);
+
       for(const field in req.body) {
-        const comment = req.body[field];
-        return res.render(`/poets/${poet.id}`, { comment });
+        comment[field] = req.body[field];
       }
 
       return poet.save();
