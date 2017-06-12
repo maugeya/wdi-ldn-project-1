@@ -11,6 +11,11 @@
     <% include ./partials/navbar %>
   </header>
   <main class="container">
+
+    <% if(locals.message) { %>
+      <p><%= message %></p>
+    <% } %> 
+
     <%- body %>
   </main>
   <% include ./partials/footer %>

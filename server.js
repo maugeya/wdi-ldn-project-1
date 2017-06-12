@@ -44,12 +44,9 @@ app.use(session({
   saveUninitialized: false
 }));
 
-
-app.get('/', (req, res) => res.render('index'));
-
 app.use(flash());
-app.use(authentication);
 app.use(customResponses);
+app.use(authentication);
 
 app.use(routes);
 app.use(errorHandler);

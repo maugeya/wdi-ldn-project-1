@@ -12,6 +12,7 @@ function poetsIndex(req, res, next) {
 function poetsShow(req, res) {
   Poet
     .findById(req.params.id)
+    .populate('createdBy comments.createdBy')
     .exec()
     .then(poet => {
       if (!poet) return res.status(404).render('error', { error: 'No Poet found'});
@@ -86,6 +87,81 @@ function poetsDelete(req, res, next) {
     .catch(next);
 }
 
+function createCommentRoute(req, res, next) {
+  req.body.createdBy = req.user;
+
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.NotFound();
+
+      poet.comments.push(req.body);
+      return poet.save();
+
+    })
+    .then((poet) =>
+    res.redirect(`/poets/${poet.id}`))
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.notFound();
+
+      const comment =
+      poet.comments.id(req.params.commentId);
+      comment.remove();
+      return poet.save();
+    })
+    .then((poet) =>
+    res.redirect(`/poets/${poet.id}`))
+    .catch(next);
+}
+
+function editCommentRoute(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.redirect();
+      if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+
+      const comment = poet.comments.id(req.params.commentId);
+
+      return res.render('poets/comments/edit', { comment });
+    })
+    .catch(next);
+}
+
+function updateCommentRoute(req, res, next) {
+  Poet
+    .findById(req.params.id)
+    .exec()
+    .then((poet) => {
+      if(!poet) return res.notFound();
+      if(!poet.belongsTo(req.user)) return res.unauthorized(`/poets/${poet.id}`, 'You do not have permission to edit that resource');
+      for(const field in req.body) {
+        const comment = req.body[field];
+        return res.render(`/poets/${poet.id}`, { comment });
+      }
+
+      return poet.save();
+    })
+    .then(() => res.redirect(`/poets/${req.params.id}`))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest(`/poets/${req.params.id}/edit`, err.toString());
+      next(err);
+    });
+}
+
+
+
+
+
 
 
 module.exports = {
@@ -95,5 +171,9 @@ module.exports = {
   create: poetsCreate,
   edit: poetsEdit,
   update: poetsUpdate,
-  delete: poetsDelete
+  delete: poetsDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute,
+  editComment: editCommentRoute,
+  updateComment: updateCommentRoute
 };

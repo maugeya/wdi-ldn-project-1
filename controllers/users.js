@@ -6,7 +6,7 @@ function userShow(req, res, next) {
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      return res.render('users/show', { user });
+      return res.render('registrations/show', { user });
     })
     .catch(next);
 }

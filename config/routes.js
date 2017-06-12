@@ -7,7 +7,7 @@ const secureRoute = require('../lib/secureRoute');
 
 
 
-router.get('/', (req, res) => res.redirect('/poets'));
+router.get('/', (req, res) => res.render('index'));
 
 router.route('/poets')
   .get(poetsController.index)
@@ -20,7 +20,9 @@ router.route('/poets/new')
 router.route('/poets/:id')
   .get(poetsController.show)
   .put(secureRoute, poetsController.update)
+  .put(secureRoute, poetsController.updateComment)
   .delete(secureRoute, poetsController.delete);
+
 
 router.route('/poets/:id/edit')
     .get(secureRoute, poetsController.edit);
@@ -29,6 +31,7 @@ router.route('/users/:id/')
     .get(secureRoute, usersController.show)
     .post(usersController.update)
     .delete(secureRoute, usersController.delete);
+
 
 router.route('/users/:id/edit')
       .get(secureRoute, usersController.edit);
@@ -51,6 +54,17 @@ router.route('/login')
 
 router.route('/logout')
   .get(sessionsController.delete);
+
+router.route('/poets/:id/comments')
+    .post(secureRoute, poetsController.createComment);
+
+router.route('/poets/:id/comments/:commentId')
+  .delete(secureRoute, poetsController.deleteComment);
+
+router.route('/poets/:id/comments/:commentId/edit')
+    .get(secureRoute, poetsController.editComment);
+
+
 
 router.all('*', (req, res) => res.notFound());
 

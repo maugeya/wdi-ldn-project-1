@@ -1,0 +1,29 @@
+<form action="/user/<%= user.id %>/edit" method="post">
+  <div class="field form-group">
+    <label for="username" class="label">Name</label>
+    <p class="control">
+      <input type="text" name="username" class="input" id="username" placeholder="<%= user.username %>">
+    </p>
+  </div>
+  <div class="field form-group">s
+    <label for="email" class="label">Email</label>
+    <p class="control">
+      <input type="text" name="email" class="input" id="email" placeholder="<%= user.email %>">
+    </p>
+  <div class="field form-group">
+    <label for="password" class="label">Password</label>
+    <p class="control">
+      <input type="password" name="password" class="input" id="password">
+    </p>
+  </div>
+  <div class="field form-group">
+    <label for="passwordConfirmation" class="label">Password Confirmation</label>
+    <p class="control">
+      <input type="password" name="passwordConfirmation" class="input" id="passwordConfirmation">
+    </p>
+  </div>
+  <button class="button">Edit Details</button>
+
+</form>
+
+</div>
