@@ -1,12 +1,15 @@
-<h1><%= user.username %></h1>
+<div class="container">
+  <h1><%= user.username %></h1>
 
 
-<img src="<%= user.imageSRC %>">
-<p><%= user.email %></p>
+  <img src="<%= user.imageSRC %>">
+  <p><%= user.email %></p>
 
-<a href="/profile/edit" class="button">Edit</a>
+  <a href="/profile/edit" class="button">Edit</a>
 
-<form method="POST" action="/profile">
-  <input type="hidden" name="_method" value="DELETE">
-  <button class="button alert">Delete</button>
-</form>
+  <form method="POST" action="/profile">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="button alert">Delete</button>
+  </form>
+
+</div>

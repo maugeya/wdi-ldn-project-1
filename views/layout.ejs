@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <title>Black Girl Magic Creatives</title>
   <% include ./partials/stylesheets %>
-  <% include ./partials/scripts %>
 </head>
 <body>
   <header>
     <% include ./partials/navbar %>
   </header>
-  <main class="container">
+  <main>
 
     <% if(locals.message) { %>
-      <p><%= message %></p>
-    <% } %> 
+      <p><%= messages %></p>
+    <% } %>
 
     <%- body %>
   </main>
   <% include ./partials/footer %>
+  <% include ./partials/scripts %>
 </body>
 </html>

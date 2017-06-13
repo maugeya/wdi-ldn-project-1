@@ -1,53 +1,53 @@
-<div class="card">
+<div class="container">
+  <div class="card">
+    <div class="row">
 
-  <div class="row">
+      <% if(locals.isAuthenticated && poet.belongsTo(user)) { %>
+        <div class="poetEditDelete">
+          <a href="/poets/<%= poet.id %>/edit" class="button">Edit Post</a>
+          <form method="POST" action="/poets/<%= poet.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete post</button>
+          </form>
+        </div>
+      <% } %>
 
-  <% if(locals.isAuthenticated && poet.belongsTo(user)) { %>
-    <span class="poetEditDelete">
-      <a href="/poets/<%= poet.id %>/edit" class="button">Edit Post</a>
-      <form method="POST" action="/poets/<%= poet.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete post</button>
-        </form>
-    </span>
-  <% } %>
+          <img src="<%= poet.imageSRC %>" class="showImg">
+        </div>
+        <div class="card-block">
+          <h3 class="poet-name"><%= poet.name %></h3>
 
+          <p><b>Why her work inspires me:</b> <%= poet.reason %></p>
+          <em><p>Recommended read: <%= poet.recommend %></p></em>
+          <small>Post created by: <%= poet.createdBy.username %></small>
+        </div>
+        <div class="results">
 
-
-    <img src="<%= poet.imageSRC %>" width="100%" class="showImg">
-  </div>
-  <div class="card-block">
-    <h3><%= poet.name %></h3>
-
-    <p><b>Why her work inspires me:</b> <%= poet.reason %></p>
-    <em><p>Recommended read: <%= poet.recommend %></p></em>
-    <small>Post created by: <%= poet.createdBy.username %></small>
-  </div>
+        </div>
 
   <% if(locals.isAuthenticated) { %>
-  <section>
-    <h4>Leave comment</h4>
-    <form method="POST" action="/poets/<%= poet.id %>/comments">
-    <textarea name="content" id="content" placeholder="Comment"></textarea>
-    <button class="button">Leave a comment</button>
-    </form>
-  </section>
-<% } %>
-<section>
-  <h4>Comments</h4>
-  <% poet.comments.forEach((comment) => { %>
-    <p><%= comment.content %></p>
-    <small>Comment created by:<%= comment.createdBy.username %></small>
-    <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-      <a href="/poets/<%= poet.id %>/comments/<%= comment.id %>/edit" class="button">Edit Comment</a>
-      <form method="POST" action="/poets/<%= poet.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete comment</button>
-      </form>
-  <%  } %>
-<% }) %>
-</section>
+    <section>
+      <h4>Leave comment</h4>
+      <form method="POST" action="/poets/<%= poet.id %>/comments">
+        <textarea name="content" id="content" placeholder="Comment"></textarea>
+        <button class="button">Leave a comment</button>
+        </form>
+    </section>
+  <% } %>
+    <section>
+      <h4>Comments</h4>
+      <% poet.comments.forEach((comment) => { %>
+        <p><%= comment.content %></p>
+        <small>Comment created by:<%= comment.createdBy.username %></small>
+        <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
+          <a href="/poets/<%= poet.id %>/comments/<%= comment.id %>/edit" class="button">Edit Comment</a>
+          <form method="POST" action="/poets/<%= poet.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete comment</button>
+          </form>
+      <%  } %>
+  <% }) %>
+    </section>
 
-
-
+  </div>
 </div>

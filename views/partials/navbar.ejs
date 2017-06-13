@@ -1,18 +1,18 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <div>
+<nav class="navbar">
+  <span class="leftNav">
     <a href="/">Home</a>
     <a href="/poets">Poets</a>
     <%# <a href="/poets/new">Add New</a>%>
-  </div>
+  </span>
     <% if (locals.isAuthenticated) { %>
-      <div>
+      <span class="rightNav">
         <a href="/logout">Logout</a>
         <a href="/profile">Profile</a>
-      </div>
+      </span>
     <% }  else { %>
-      <div>
+      <span class="rightNav">
         <a href="/register">Register</a>
         <a href="/login">Login</a>
-      </div>
+      </span>
   <% } %>
 </nav>
