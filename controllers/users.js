@@ -6,7 +6,7 @@ function userShow(req, res, next) {
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      return res.render('registrations/show', { user });
+      return res.render('users/show', { user });
     })
     .catch(next);
 }
@@ -23,6 +23,7 @@ function userEdit(req, res, next) {
 }
 
 function userUpdate(req, res, next) {
+
   if(req.file) req.body.image = req.file.key;
 
   User
@@ -44,12 +45,25 @@ function userUpdate(req, res, next) {
     });
 }
 
+// function userDelete(req, res, next) {
+//   req.user
+//     .remove()
+//     .then(() => {
+//       req.session.regenerate(() => res.authorized('/', 'Your account has been deleted'));
+//     })
+//     .catch(next);
+// }
+
 function userDelete(req, res, next) {
-  req.user
-    .remove()
-    .then(() => {
-      req.session.regenerate(() => res.authorized('/', 'Your account has been deleted'));
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.redirect();
+      if(!user === req.user) return res.unauthorized(`/users/${user.id}`, 'You do not have permission to edit that resource');
+      return user.remove();
     })
+    .then(() => res.redirect('/index'))
     .catch(next);
 }
 

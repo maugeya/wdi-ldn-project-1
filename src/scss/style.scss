@@ -1,3 +1,7 @@
+main {
+  background-color: #fffcf2;
+}
+
 div {
   &.jumbotron {
   min-height: 250px;
@@ -7,6 +11,8 @@ div {
   background-size: cover;
   position: relative;
   text-align: center;
+  border-bottom: 5px solid #4C1043;
+
     h1 {
     position: absolute;
     // top: 50%;
@@ -22,6 +28,10 @@ div {
 
 nav {
   background-color: black;
+  border-bottom: 5px solid #4C1043;
+  p{
+  color: #FCC200;
+  }
   a {
     color: #FCC200;
     font-family: 'Cinzel', serif;
@@ -35,6 +45,21 @@ nav {
 
   }
 }
+ul {
+  li {
+    &.poetImg {
+    margin-top: 30px;
+    & div.card-img-overlay {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      text-align: center;
+      h4 {
+        margin-top: 80%;
+        }
+      }
+    }
+  }
+}
+
 
 
 ul {
@@ -50,7 +75,7 @@ body {
 
 img {
   height: 220px;
-  width: 100%;
+  width: 250px;
 }
 
 li {

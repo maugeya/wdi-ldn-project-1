@@ -5,9 +5,9 @@
   <img src="<%= user.imageSRC %>">
   <p><%= user.email %></p>
 
-  <a href="/profile/edit" class="button">Edit</a>
+  <a href="/users/<%= user.id %>/edit" class="button">Edit</a>
 
-  <form method="POST" action="/profile">
+  <form method="POST" action="/users/<%= user.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <button class="button alert">Delete</button>
   </form>

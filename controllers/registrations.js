@@ -18,47 +18,10 @@ function registrationsCreate(req, res, next) {
     });
 }
 
-function registrationsShow(req, res) {
-  return res.render('registrations/show');
-}
 
-function registrationsEdit(req, res) {
-  return res.render('registrations/edit');
-}
-
-function registrationsUpdate(req, res, next) {
-  for(const field in req.body) {
-    req.user[field] = req.body[field];
-  }
-
-  console.log(req.user);
-  req.user.save()
-
-
-    .then(() => res.redirect('/profile'))
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        return res.badRequest('/profile/edit', err.toString());
-      }
-      next(err);
-
-    });
-}
-
-function registrationsDelete(req, res, next) {
-  req.user
-    .remove()
-    .then(() => {
-      req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
-    })
-    .catch(next);
-}
 
 module.exports = {
   new: registrationsNew,
-  create: registrationsCreate,
-  show: registrationsShow,
-  delete: registrationsDelete,
-  edit: registrationsEdit,
-  update: registrationsUpdate
+  create: registrationsCreate
+
 };

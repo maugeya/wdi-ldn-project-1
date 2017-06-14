@@ -27,9 +27,9 @@ router.route('/poets/:id')
 router.route('/poets/:id/edit')
     .get(secureRoute, upload.single('image'), poetsController.edit);
 
-router.route('/users/:id/')
+router.route('/users/:id')
     .get(secureRoute, usersController.show)
-    .post(upload.single('image'), usersController.update)
+    .post(secureRoute, upload.single('image'), usersController.update)
     .delete(secureRoute, usersController.delete);
 
 
@@ -40,13 +40,6 @@ router.route('/register')
     .get(upload.single('image'), registrationsController.new)
     .post(upload.single('image'), registrationsController.create);
 
-router.route('/profile')
-    .get(secureRoute, registrationsController.show)
-    .put(secureRoute, upload.single('image'), registrationsController.update)
-    .delete(secureRoute, registrationsController.delete);
-
-router.route('/profile/edit')
-    .get(secureRoute, upload.single('image'), registrationsController.edit);
 
 router.route('/login')
   .get(sessionsController.new)

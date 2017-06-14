@@ -2,12 +2,13 @@
   <span class="leftNav">
     <a href="/">Home</a>
     <a href="/poets">Poets</a>
-    <%# <a href="/poets/new">Add New</a>%>
+    <a href="/poets/new">Add New</a>
   </span>
     <% if (locals.isAuthenticated) { %>
       <span class="rightNav">
         <a href="/logout">Logout</a>
-        <a href="/profile">Profile</a>
+        <a href="/users/<%= user.id %>">Profile</a>
+        <p>Hi <%= user.username %>!</p>
       </span>
     <% }  else { %>
       <span class="rightNav">
