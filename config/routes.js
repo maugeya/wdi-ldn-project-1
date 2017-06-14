@@ -5,6 +5,7 @@ const sessionsController = require('../controllers/sessions');
 const usersController = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 const upload = require('../lib/upload');
+const oauth = require('../controllers/oauth');
 
 
 
@@ -44,6 +45,9 @@ router.route('/register')
 router.route('/login')
   .get(sessionsController.new)
   .post(sessionsController.create);
+
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.route('/logout')
   .get(sessionsController.delete);
