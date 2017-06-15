@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const databaseURL = 'mongodb://localhost/wdi-ldn-project-1';
-mongoose.connect(databaseURL);
+const { dbURI } = require('./config/environment');
+
+
+mongoose.connect(dbURI);
 
 const Poet = require('../models/poet');
 const User = require('../models/user');
