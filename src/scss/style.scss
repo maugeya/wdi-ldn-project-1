@@ -4,7 +4,6 @@ main {
 
 }
 
-
 div {
   &.jumbotron {
   min-height: 250px;
@@ -29,22 +28,39 @@ div {
 nav {
   background-color: black;
   border-bottom: 5px solid #4C1043;
-  p{
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  height: 50px;
   color: #FCC200;
+  #nav-right {
+    float: right;
   }
   a {
-    color: #FCC200;
-    font-family: 'Cinzel', serif;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
-    padding: 0 10px;
-    border-right: 1px solid #FCC200;
-    &:last-of-type {
-          border-right: none;
-        }
-      }
-}
+      color: #FCC200;
 
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+  }
+  ul {
+    li {
+      display: inline-block;
+      line-height: 25px;
+      padding: 0 10px;
+      &:last-of-type {
+            border-right: none;
+          }
+      #nav-right {
+        float: right;
+      }
+
+
+    }
+  }
+}
 
 
 
