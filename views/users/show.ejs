@@ -1,15 +1,23 @@
-<div class="container">
-  <h1><%= user.username %></h1>
+<div class="container user-profile">
+  <h1>User Profile</h1>
+  <div class="row">
+    <section class="col-lg-12">
+      <div class="details-margin"><h4 class="details">Username: </h4><h4 class="details"><%= user.username %></h4></div>
 
 
-  <img src="<%= user.imageSRC %>">
-  <p><%= user.email %></p>
 
-  <a href="/users/<%= user.id %>/edit" class="button">Edit</a>
+      <img src="<%= user.imageSRC %>">
+      <div class="details-margin">
+        <h4 class="details">Email Address: </h4><h4 class="details"><%= user.email %></h4>
 
-  <form method="POST" action="/users/<%= user.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="button alert">Delete</button>
-  </form>
-
+        <a href="/users/<%= user.id %>/edit" class="btn btn-primary edit-btn">Edit</a>
+        <div class="delete-user">
+          <form method="POST" action="/users/<%= user.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn delete-btn">Delete</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

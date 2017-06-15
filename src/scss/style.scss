@@ -169,11 +169,13 @@ p {
 }
 
 img {
-  max-height: 300px;
+  max-height: 400px;
   &.show-page-image {
     border: 10px groove $purple-color;
   }
 }
+
+
 
 
 section {
@@ -286,6 +288,43 @@ div {
         margin-top: 30px;
       }
     }
+  }
+}
+
+div {
+  &.delete-user {
+    button {
+      background-color: red;
+      color: white;
+      margin: 20px;
+    }
+  }
+  &.details-margin {
+    margin: 20px;
+  }
+  &.user-profile {
+    text-align: center;
+     h4 {
+       font-size: 25px;
+      &.details {
+        display: inline;
+      }
+    }
+    p {
+      display: inline;
+    }
+  }
+}
+
+div {
+  &.error-page {
+    text-align: center;
+  }
+}
+
+div {
+  &.login {
+    text-align: center;
   }
 }
 

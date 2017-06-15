@@ -1,19 +1,24 @@
-<div class="container">
-  <form action="/login" method="post">
-    <div class="field form-group">
-      <label for="email" class="label">Email</label>
-      <p class="control">
-        <input type="text" name="email" class="input" id="email" required>
-      </p>
-    </div>
-    <div class="field form-group">
-      <label for="password" class="label">Password</label>
-      <p class="control">
-        <input type="password" name="password" class="input" id="password" required>
-      </p>
-    </div>
-      <button class="button">Login</button>
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      <a href="<%= oauth.facebook.getLoginURL() %>" class="button is-primary"><span class="icon"><i class="fa fa-facebook"></i></span><span>Login With Facebook</span></a>
-  </form>
+<div class="container login">
+  <h1>Login</h1>
+  <div class="row">
+    <section class="offset-5">
+    <form action="/login" method="post">
+      <div class="field form-group">
+        <label for="email" class="label">Email</label>
+        <p class="control">
+          <input type="text" name="email" class="input" id="email" required>
+        </p>
+      </div>
+      <div class="field form-group">
+        <label for="password" class="label">Password</label>
+        <p class="control">
+          <input type="password" name="password" class="input" id="password" required>
+        </p>
+      </div>
+        <button class="btn add-btn">Login</button>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <a href="<%= oauth.facebook.getLoginURL() %>" class="btn btn-primary"><span class="icon"><i class="fa fa-facebook"></i></span><span>Login With Facebook</span></a>
+    </form>
+    </section>
+  </div>
 </div>

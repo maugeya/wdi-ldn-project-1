@@ -1,39 +1,45 @@
 <div class="container">
   <h1>Register</h1>
+  <div class="row">
+    <section class="col-lg-6">
+      <div class="col-lg-12">
+        <form action="/register" method="post" enctype="multipart/form-data">
+          <div class="field form-group">
+            <label for="username" class="label">Username</label>
+            <p class="control">
+            <input type="text" name="username" class="input" id="username">
+            </p>
+          </div>
+          <div class="field form-group">
+            <label for="image">Image</label>
+            <p class="control">
+              <input type="file" name="image" id="image">
+            </p>
+          </div>
+          <div class="field form-group">
+            <label for="email" class="label">Email</label>
+            <p class="control">
+              <input type="text" name="email" class="input" id="email" required>
+            </p>
+          <div class="field form-group">
+            <label for="password" class="label">Password</label>
+            <p class="control">
+            <input type="password" name="password" class="input" id="password" required>
+            </p>
+          </div>
+          <div class="field form-group">
+            <label for="passwordConfirmation" class="label">Password Confirmation</label>
+            <p class="control">
+            <input type="password" name="passwordConfirmation" class="input" id="passwordConfirmation" required>
+            </p>
+          </div>
+            <button class="btn btn-primary add-btn">Register</button>
 
-
-  <form action="/register" method="post" enctype="multipart/form-data">
-    <div class="field form-group">
-      <label for="username" class="label">Username</label>
-      <p class="control">
-        <input type="text" name="username" class="input" id="username">
-      </p>
-    </div>
-    <div class="field form-group">
-      <label for="image">Image</label>
-      <p class="control">
-        <input type="file" name="image" id="image">
-      </p>
-    </div>
-    <div class="field form-group">
-      <label for="email" class="label">Email</label>
-      <p class="control">
-        <input type="text" name="email" class="input" id="email" required>
-      </p>
-    <div class="field form-group">
-      <label for="password" class="label">Password</label>
-      <p class="control">
-        <input type="password" name="password" class="input" id="password" required>
-      </p>
-    </div>
-    <div class="field form-group">
-      <label for="passwordConfirmation" class="label">Password Confirmation</label>
-      <p class="control">
-        <input type="password" name="passwordConfirmation" class="input" id="passwordConfirmation" required>
-      </p>
-    </div>
-    <button class="button">Register</button>
-
-  </form>
-
+        </form>
+      </div>
+    </section>
+    <section class="register-image col-lg-6">
+      <img src="../assets/images/register.png" class="col-lg-9 register" alt="">
+    </section>
+  </div>
 </div>

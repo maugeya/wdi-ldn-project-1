@@ -20,7 +20,7 @@
           <h4 class="show-header">Leave comment</h4>
 
           <form method="POST" action="/poets/<%= poet.id %>/comments">
-            <textarea class="form-control comment-input" name="content" id="content" placeholder="Comment"></textarea>
+            <textarea class="form-control comment-input" name="content" id="content" placeholder="Comment" required></textarea>
             <button class="btn btn-primary add-btn">Add comment</button>
           </form>
 
