@@ -15,8 +15,6 @@ const errorHandler = require('./lib/errorHandler');
 
 const app = express();
 
-// const { port } = require('./config/environment');
-
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(expressLayouts);

@@ -10,7 +10,10 @@ function registrationsCreate(req, res, next) {
 
   User
     .create(req.body)
-    .then(() => res.redirect('/login'))
+    .then((user) => {
+      req.flash('info', `Thanks for registering, ${user.username}! Please login.`);
+      res.redirect('/login');  
+    })
     .catch((err) => {
       if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
       next(err);

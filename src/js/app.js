@@ -65,8 +65,8 @@ $.ajax({
 
 
   const wikiURL = `https://en.wikipedia.org/wiki?curid=${pageId}`;
-  // console.log(wikiURL);
-  if(pageId.length > 0) {
+  
+  if(pageId !== '-1') {
     $wiki.append(`<a href="${wikiURL}" target="_blank">Wikipedia Page</a>`);
 
   }
