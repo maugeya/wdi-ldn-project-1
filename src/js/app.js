@@ -1,6 +1,8 @@
 /* global gapi:true */
+
 console.log('JS loaded');
 const $results = $('.results');
+const $wiki =$('.wiki');
 
 function gapiReady() {
   gapi.client.load('youtube', 'v3')
@@ -30,7 +32,7 @@ function getOutput(item) {
   // var thumb = item.snippet.thumbnails.high.url;
   // var channelTitle = item.snippet.channelTitle;
 
-  var output = `
+  const output = `
   <iframe width="300" height="200" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
   `;
 
@@ -49,3 +51,23 @@ function getOutput(item) {
 
   return output;
 }
+
+
+$.ajax({
+  url: '/wikipedia',
+  method: 'GET',
+  data: { name }
+})
+.then((data) => {
+  console.log(data);
+  const pageId = (Object.keys(data.query.pages)[0]);
+  console.log(pageId);
+
+
+  const wikiURL = `https://en.wikipedia.org/wiki?curid=${pageId}`;
+  // console.log(wikiURL);
+  if(pageId.length > 0) {
+    $wiki.append(`<a href="${wikiURL}" target="_blank">Wikipedia Page</a>`);
+
+  }
+});

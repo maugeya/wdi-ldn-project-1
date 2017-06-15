@@ -15,7 +15,7 @@
           <img src="<%= poet.imageSRC %>" class="showImg">
         </div>
         <div class="card-block">
-          <h3 class="poet-name"><%= poet.name %></h3>
+          <h3 class="poet-name"><%= poet.name %></h3><span class="wiki"></span>
 
           <p><b>Why her work inspires me:</b> <%= poet.reason %></p>
           <em><p>Recommended read: <%= poet.recommend %></p></em>
@@ -24,6 +24,7 @@
         <div class="results">
 
         </div>
+
 
   <% if(locals.isAuthenticated) { %>
     <section>

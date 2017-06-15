@@ -6,10 +6,13 @@ const usersController = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 const upload = require('../lib/upload');
 const oauth = require('../controllers/oauth');
+const wikipediaController = require('../controllers/wikipedia');
 
 
 
 router.get('/', (req, res) => res.render('index'));
+
+router.get('/wikipedia', wikipediaController.proxy);
 
 router.route('/poets')
   .get(poetsController.index)

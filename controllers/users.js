@@ -45,14 +45,6 @@ function userUpdate(req, res, next) {
     });
 }
 
-// function userDelete(req, res, next) {
-//   req.user
-//     .remove()
-//     .then(() => {
-//       req.session.regenerate(() => res.authorized('/', 'Your account has been deleted'));
-//     })
-//     .catch(next);
-// }
 
 function userDelete(req, res, next) {
   User

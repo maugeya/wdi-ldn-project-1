@@ -1,19 +1,19 @@
 <nav class="navbar">
-  <span class="leftNav">
+  <div class="leftNav">
     <a href="/">Home</a>
     <a href="/poets">Poets</a>
     <a href="/poets/new">Add New</a>
-  </span>
+  </div>
     <% if (locals.isAuthenticated) { %>
-      <span class="rightNav">
+      <div class="rightNav">
         <a href="/logout">Logout</a>
         <a href="/users/<%= user.id %>">Profile</a>
         <p>Hi <%= user.username %>!</p>
-      </span>
+      </div>
     <% }  else { %>
-      <span class="rightNav">
+      <div class="rightNav">
         <a href="/register">Register</a>
         <a href="/login">Login</a>
-      </span>
+      </div>
   <% } %>
 </nav>

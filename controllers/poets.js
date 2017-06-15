@@ -36,7 +36,7 @@ function poetsCreate(req, res, next) {
     .create(req.body)
     .then(() => res.redirect('/poets'))
     .catch((err) => {
-      if(err.name === 'ValidationError') return res.badRequest(`/poets/new`, err.toString());
+      if(err.name === 'ValidationError') return res.badRequest('/poets/new', err.toString());
       next(err);
     });
 }
@@ -89,7 +89,7 @@ function poetsDelete(req, res, next) {
 
 function createCommentRoute(req, res, next) {
   req.body.createdBy = req.user;
-  
+
 
   Poet
     .findById(req.params.id)

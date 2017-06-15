@@ -1,11 +1,14 @@
 main {
   background-color: #fffcf2;
+
+
 }
+
 
 div {
   &.jumbotron {
   min-height: 250px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.autostraddle.com/wp-content/uploads/2009/02/1960s-angela-davis.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/images/angela-davis.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,9 +45,12 @@ nav {
     &:last-of-type {
           border-right: none;
         }
-
-  }
+      }
 }
+
+
+
+
 ul {
   li {
     &.poetImg {
