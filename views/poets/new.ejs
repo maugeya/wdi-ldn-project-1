@@ -1,24 +1,29 @@
-<div class="container">
-  <h1>Add to the collection</h1>
+<div class="container add-poet-page">
+  <h1 class="title-header">Add to the collection</h1>
   <div class="row">
-    <form action="/poets" method="post" enctype="multipart/form-data">
-      <div class="field form-group">
-        <label for="image">Image</label>
-        <input type="file" name="image" >
-      </div>
-      <div class="field form-group">
-        <label for="name">Name</label>
-        <input class="form-control" type="text" name="name" >
-      </div>
-      <div class="field form-group">
-        <label for="reason">Why I like her work:</label>
-        <textarea class="form-control" type="text" name="reason" ></textarea>
-      </div>
-      <div class="field form-group">
-        <label for="recommend">Recommended reads:</label>
-        <textarea class="form-control" type="text" name="recommend"></textarea>
-      </div>
-      <button class="btn btn-success">Add Poet</button>
-    </form>
+    <section class="col-lg-6 poet-form">
+      <form action="/poets" method="post" enctype="multipart/form-data">
+        <div class="field form-group">
+          <label for="image">Image</label>
+          <input type="file" name="image" >
+        </div>
+        <div class="field form-group">
+          <label for="name">Name</label>
+          <input class="form-control" type="text" name="name" >
+        </div>
+        <div class="field form-group">
+          <label for="reason">Why I like her work:</label>
+          <textarea class="form-control" type="text" name="reason" ></textarea>
+        </div>
+        <div class="field form-group">
+          <label for="recommend">Recommended reads:</label>
+          <textarea class="form-control" type="text" name="recommend"></textarea>
+        </div>
+        <button class="btn btn-primary add-btn">Add Poet</button>
+      </form>
+    </section>
+    <section class="quote-image col-6">
+      <img src="../assets/images/angelou-quote.jpg" alt="Quote by Maya Angelou">
+    </section>
   </div>
 </div>

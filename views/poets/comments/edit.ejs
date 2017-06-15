@@ -1,11 +1,14 @@
-<h1>Edit Comment</h1>
+<div class="container">
+  <h1>Edit Comment</h1>
+  <div class="row">
+  <section class="col-lg-6 poet-form">  
+    <form method="POST" action="/poets/<%= poet.id %>/comments/<%= comment.id %>">
 
-<form method="POST" action="/poets/<%= poet.id %>/comments/<%= comment.id %>">
-
-  <input type="hidden" name="_method" value="PUT">
-  <div>
-    <label for="comment">Comment </label>
-    <textarea name="content" id="comment" rows="6" cols="50"><%= comment.content %></textarea>
+      <input type="hidden" name="_method" value="PUT">
+      <div>
+        <textarea name="content" id="comment" rows="6" cols="50"><%= comment.content %></textarea>
+      </div>
+      <button class="btn btn-primary edit-btn">Submit</button>
+    </form>
   </div>
-  <button>Submit</button>
-</form>
+</div>

@@ -27,13 +27,14 @@ function searchYoutube() {
 }
 
 function getOutput(item) {
-  // var title = item.snippet.title;
-  // var description = item.snippet.description;
+  var title = item.snippet.title;
+  var description = item.snippet.description;
   // var thumb = item.snippet.thumbnails.high.url;
   // var channelTitle = item.snippet.channelTitle;
 
   const output = `
-  <iframe width="300" height="200" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+  <iframe width="400" height="300" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+
   `;
 
   // var output = '<li>' +
@@ -65,7 +66,7 @@ $.ajax({
 
 
   const wikiURL = `https://en.wikipedia.org/wiki?curid=${pageId}`;
-  
+
   if(pageId !== '-1') {
     $wiki.append(`<a href="${wikiURL}" target="_blank">Wikipedia Page</a>`);
 
