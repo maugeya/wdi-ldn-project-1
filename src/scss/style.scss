@@ -1,6 +1,7 @@
 $purple-color: #4C1043;
 $yellow-color: #FCC200;
 
+
 main {
   margin-top: 40px;
   background-color: #fffcf2;
@@ -333,7 +334,8 @@ footer {
   font-family: 'Lato', sans-serif;
   background-color: black;
   color: $yellow-color;
-  height: 50px;
+  height: 70px;
+
   & div.footerRight {
     display: inline-block;
     float: right;
@@ -346,7 +348,7 @@ footer {
     margin: auto 20px;
   }
   div.twitter {
-    line-height: 50px;
+    line-height: 25px;
     margin: auto 20px;
   }
 }
