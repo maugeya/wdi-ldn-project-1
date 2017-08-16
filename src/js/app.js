@@ -37,18 +37,6 @@ function getOutput(item) {
 
   `;
 
-  // var output = '<li>' +
-  // '<div class="list-left"' +
-  // '<img src="'+thumb+'">' +
-  // '</div>' +
-  // '<div class="list-right"' +
-  // '<h3>'+title+'</h3>' +
-  // '<small>By <span class="cTitle">'+channelTitle+'</span></small>' +
-  // '<p>'+description+'</p>' +
-  // '</div>' +
-  // '</li>' +
-  // '<div class="clearfix"></div>' +
-  // '';
 
   return output;
 }
@@ -62,7 +50,6 @@ $.ajax({
 .then((data) => {
   console.log(data);
   const pageId = (Object.keys(data.query.pages)[0]);
-  console.log(pageId);
 
 
   const wikiURL = `https://en.wikipedia.org/wiki?curid=${pageId}`;

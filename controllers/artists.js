@@ -14,6 +14,7 @@ function artistsIndex(req, res, next) {
   .exec()
   .then((artists) => res.render('artists/index', { artists }))
   .catch(next);
+
 }
 
 function artistsShow(req, res) {

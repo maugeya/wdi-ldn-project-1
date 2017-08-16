@@ -13,10 +13,13 @@
         </div>
         <div class="field form-group">
           <p for="category">Category of Work</p>
-          <% categories.forEach((category) => { %>
-            <input type="checkbox" value="<%= category %>" name="category">
-            <label for="category"><%= category %></label>
-        <% }) %>
+          <div class="btn-group" data-toggle="buttons">
+            <% categories.forEach((category) => { %>
+              <label for="category" class="btn btn-primary">
+              <input id="categoryTags" type="checkbox" value="<%= category %>" name="category" autocomplete="off"><%= category %>
+              </label>
+            <% }) %>
+          </div>
         </div>
         <div class="field form-group">
           <label for="reason">Why I like her work:</label>
