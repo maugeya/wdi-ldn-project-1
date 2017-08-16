@@ -16,8 +16,9 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
 
 };
 
-const poetSchema = new mongoose.Schema({
+const artistSchema = new mongoose.Schema({
   image: { type: String },
+  category: { type: String, required: true },
   name: { type: String, required: true },
   reason: { type: String, required: true },
   recommend: { type: String },
@@ -26,7 +27,7 @@ const poetSchema = new mongoose.Schema({
 
 });
 
-poetSchema
+artistSchema
   .virtual('imageSRC')
   .get(function getImageSRC() {
     if(!this.image) return null;
@@ -34,9 +35,9 @@ poetSchema
     return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
   });
 
-poetSchema.methods.belongsTo = function poetBelongsTo(user) {
+artistSchema.methods.belongsTo = function artistBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
 };
 
-module.exports = mongoose.model('Poet', poetSchema);
+module.exports = mongoose.model('Artist', artistSchema);

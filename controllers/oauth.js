@@ -42,7 +42,7 @@ function facebook(req, res, next) {
     req.session.userId = user.id;
     req.session.isAuthenticated = true;
     req.flash('info', `welcome back ${user.username}`);
-    res.redirect('/poets');
+    res.redirect('/artists');
   })
   .catch(next);
 }

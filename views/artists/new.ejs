@@ -1,8 +1,8 @@
-<div class="container add-poet-page">
+<div class="container add-artist-page">
   <h1 class="title-header">Add to the collection</h1>
   <div class="row">
-    <section class="col-lg-6 poet-form">
-      <form action="/poets" method="post" enctype="multipart/form-data">
+    <section class="col-lg-6 artist-form">
+      <form action="/artists" method="post" enctype="multipart/form-data">
         <div class="field form-group">
           <label for="image">Image</label>
           <input type="file" name="image" >
@@ -12,14 +12,21 @@
           <input class="form-control" type="text" name="name" required>
         </div>
         <div class="field form-group">
+          <p for="category">Category of Work</p>
+          <% categories.forEach((category) => { %>
+            <input type="checkbox" value="<%= category %>" name="category">
+            <label for="category"><%= category %></label>
+        <% }) %>
+        </div>
+        <div class="field form-group">
           <label for="reason">Why I like her work:</label>
           <textarea class="form-control" type="text" name="reason" required></textarea>
         </div>
         <div class="field form-group">
-          <label for="recommend">Recommended reads:</label>
+          <label for="recommend">Recommended work:</label>
           <textarea class="form-control" type="text" name="recommend"></textarea>
         </div>
-        <button class="btn btn-primary add-btn">Add Poet</button>
+        <button class="btn btn-primary add-btn">Add Artist</button>
       </form>
     </section>
     <section class="quote-image col-6">

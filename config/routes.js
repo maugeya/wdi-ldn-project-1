@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const poetsController = require('../controllers/poets');
+const artistsController = require('../controllers/artists');
 const registrationsController = require('../controllers/registrations');
 const sessionsController = require('../controllers/sessions');
 const usersController = require('../controllers/users');
@@ -14,22 +14,22 @@ router.get('/', (req, res) => res.render('index'));
 
 router.get('/wikipedia', wikipediaController.proxy);
 
-router.route('/poets')
-  .get(poetsController.index)
-  .post(secureRoute, upload.single('image'), poetsController.create);
+router.route('/artists')
+  .get(artistsController.index)
+  .post(secureRoute, upload.single('image'), artistsController.create);
 
-router.route('/poets/new')
-    .get(secureRoute, poetsController.new);
-
-
-router.route('/poets/:id')
-  .get(poetsController.show)
-  .put(secureRoute, upload.single('image'), poetsController.update)
-  .delete(secureRoute, poetsController.delete);
+router.route('/artists/new')
+    .get(secureRoute, artistsController.new);
 
 
-router.route('/poets/:id/edit')
-    .get(secureRoute, upload.single('image'), poetsController.edit);
+router.route('/artists/:id')
+  .get(artistsController.show)
+  .put(secureRoute, upload.single('image'), artistsController.update)
+  .delete(secureRoute, artistsController.delete);
+
+
+router.route('/artists/:id/edit')
+    .get(secureRoute, upload.single('image'), artistsController.edit);
 
 router.route('/users/:id')
     .get(secureRoute, usersController.show)
@@ -55,15 +55,15 @@ router.route('/oauth/facebook')
 router.route('/logout')
   .get(sessionsController.delete);
 
-router.route('/poets/:id/comments')
-    .post(secureRoute, poetsController.createComment);
+router.route('/artists/:id/comments')
+    .post(secureRoute, artistsController.createComment);
 
-router.route('/poets/:id/comments/:commentId')
-  .put(secureRoute, poetsController.updateComment)
-  .delete(secureRoute, poetsController.deleteComment);
+router.route('/artists/:id/comments/:commentId')
+  .put(secureRoute, artistsController.updateComment)
+  .delete(secureRoute, artistsController.deleteComment);
 
-router.route('/poets/:id/comments/:commentId/edit')
-    .get(secureRoute, poetsController.editComment);
+router.route('/artists/:id/comments/:commentId/edit')
+    .get(secureRoute, artistsController.editComment);
 
 
 

@@ -52,7 +52,7 @@ div {
     h1 {
     position: absolute;
     color: white;
-    font-family: 'Cinzel', serif;
+    font-family: 'Archivo', sans-serif;
     font-weight: bold;
     font-size: 50px;
    }
@@ -62,8 +62,7 @@ div {
 nav {
   background-color: black;
   border-bottom: 5px solid $purple-color;
-  font-family: 'Cinzel', serif;
-  letter-spacing: 1px;
+  font-family: 'Archivo', sans-serif;
   font-size: 16px;
   height: 50px;
   color: $yellow-color;
@@ -73,6 +72,8 @@ nav {
   }
   a {
     color: $yellow-color;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
     &:hover {
       color: white;
       text-decoration: none;
@@ -101,7 +102,7 @@ nav {
 ul {
   list-style: none;
   li {
-    &.poetImg {
+    &.artistImg {
       margin-top: 30px;
       div.card-inverse:hover {
         animation: grow 5s ease;
@@ -121,7 +122,7 @@ ul {
 
 
 ul {
-  &.poetRow {
+  &.artistRow {
     padding: 0;
     margin: 0;
   }
@@ -225,7 +226,7 @@ div {
 }
 
 div {
-  &.poet-edit-delete {
+  &.artist-edit-delete {
     display: block;
     padding: 5px;
     margin-top: 20px;
@@ -279,13 +280,13 @@ iframe {
 }
 
 div {
-  &.add-poet-page {
+  &.add-artist-page {
     section {
       &.quote-image {
         display: inline;
         text-align: center;
       }
-      &.poet-form {
+      &.artist-form {
         margin-top: 30px;
       }
     }
@@ -334,6 +335,7 @@ footer {
   font-family: 'Lato', sans-serif;
   background-color: black;
   color: $yellow-color;
+  letter-spacing: 1.2px;
   height: 70px;
 
   & div.footerRight {

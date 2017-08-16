@@ -1,7 +1,3 @@
-# wdi-ldn-project-1
-wdi-ldn-project-1
-
-
 # Black Girl Magic creative.
 ### A database of excellence!
 
@@ -61,3 +57,4 @@ The Wikipedia API docs are very useful. Other issues included, bringing down my 
 I want to expand the index of entries that are in the db to including all women from different categories rather than just artistry.
 
 I would also like to have a selection of pictures for all that are on the site that can be randomly picked so that it is not always the same picture appearing all the time. 
+

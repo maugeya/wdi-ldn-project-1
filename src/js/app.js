@@ -12,7 +12,7 @@ function gapiReady() {
     });
 }
 
-const name = $('.poet-name').text();
+const name = $('.artist-name').text();
 
 function searchYoutube() {
   gapi.client.youtube.search.list({
