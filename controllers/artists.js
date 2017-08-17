@@ -12,8 +12,19 @@ function artistsIndex(req, res, next) {
   .find()
   .populate('createdBy')
   .exec()
-  .then((artists) => res.render('artists/index', { artists }))
+  .then((artists) => res.render('artists/index', { artists, categories }))
   .catch(next);
+
+  const regex = new RegExp(req.query.q, 'i');
+  console.log(req.params);
+
+  const query = { category: regex};
+
+  Artist
+    .find(query)
+    .exec()
+    .then((artists) => res.render('artists', { artists }))
+    .catch((err) => res.status(500).end(err));
 
 }
 
