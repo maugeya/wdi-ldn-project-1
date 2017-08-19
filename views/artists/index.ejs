@@ -1,14 +1,17 @@
 <div class="index container">
-  <form method="GET">
-    <label for="">Search by category of work</label>
-    <input type="text" name="q" placeholder="Search" list="category">
-      <datalist id="category">
-        <option value="poet"></option>
-        <option value="musician"></option>
-        <option value="actress"></option>
-        <option value="author"></option>
-      </datalist>
-  </form>
+  <div class="searchInput row">
+    <form method="GET">
+      <label for="">Search by category of work</label>
+      <input type="text" name="q" placeholder="Search" list="category">
+        <datalist id="category">
+          <option value="poet"></option>
+          <option value="musician"></option>
+          <option value="actress"></option>
+          <option value="author"></option>
+        </datalist>
+    </form>
+  </div>
+
   <ul class="row artistRow">
     <% artists.forEach(artist => { %>
       <li class="artistImg col-lg-3 col-md-8 col-sm-10">

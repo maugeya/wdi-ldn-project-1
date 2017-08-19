@@ -16,7 +16,7 @@ function artistsIndex(req, res, next) {
   .catch(next);
 
   const regex = new RegExp(req.query.q, 'i');
-  console.log(req.params);
+
 
   const query = { category: regex};
 
@@ -25,6 +25,7 @@ function artistsIndex(req, res, next) {
     .exec()
     .then((artists) => res.render('artists', { artists }))
     .catch((err) => res.status(500).end(err));
+
 
 }
 
