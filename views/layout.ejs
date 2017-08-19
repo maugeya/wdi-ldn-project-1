@@ -13,7 +13,7 @@
   <main class="content">
 
     <% for (const type in messages) { %>
-   <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+   <p id="alertMessage" class="alert alert-<%= type %>"><%= messages[type] %></p>
     <% } %>
 
 
